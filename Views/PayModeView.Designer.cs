@@ -34,9 +34,6 @@
             tabControl1 = new TabControl();
             tabPagePayModeList = new TabPage();
             BtnClose = new Button();
-            BtnDelete = new Button();
-            BtnEdit = new Button();
-            BtnNew = new Button();
             DgPayMode = new DataGridView();
             BtnSearch = new Button();
             TxtSearch = new TextBox();
@@ -50,6 +47,9 @@
             label4 = new Label();
             TxtPayModeId = new TextBox();
             label3 = new Label();
+            BtnDelete = new Button();
+            BtnEdit = new Button();
+            BtnNew = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl1.SuspendLayout();
@@ -126,36 +126,6 @@
             BtnClose.Size = new Size(128, 59);
             BtnClose.TabIndex = 8;
             BtnClose.UseVisualStyleBackColor = true;
-            // 
-            // BtnDelete
-            // 
-            BtnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            BtnDelete.Image = Properties.Resources.delete;
-            BtnDelete.Location = new Point(682, 198);
-            BtnDelete.Name = "BtnDelete";
-            BtnDelete.Size = new Size(128, 59);
-            BtnDelete.TabIndex = 7;
-            BtnDelete.UseVisualStyleBackColor = true;
-            // 
-            // BtnEdit
-            // 
-            BtnEdit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            BtnEdit.Image = Properties.Resources.edit;
-            BtnEdit.Location = new Point(682, 133);
-            BtnEdit.Name = "BtnEdit";
-            BtnEdit.Size = new Size(128, 59);
-            BtnEdit.TabIndex = 6;
-            BtnEdit.UseVisualStyleBackColor = true;
-            // 
-            // BtnNew
-            // 
-            BtnNew.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            BtnNew.Image = Properties.Resources._new;
-            BtnNew.Location = new Point(682, 68);
-            BtnNew.Name = "BtnNew";
-            BtnNew.Size = new Size(128, 59);
-            BtnNew.TabIndex = 5;
-            BtnNew.UseVisualStyleBackColor = true;
             // 
             // DgPayMode
             // 
@@ -289,6 +259,36 @@
             label3.TabIndex = 1;
             label3.Text = "Pay Mode Id";
             // 
+            // BtnDelete
+            // 
+            BtnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            BtnDelete.Image = Properties.Resources.delete;
+            BtnDelete.Location = new Point(682, 198);
+            BtnDelete.Name = "BtnDelete";
+            BtnDelete.Size = new Size(128, 59);
+            BtnDelete.TabIndex = 7;
+            BtnDelete.UseVisualStyleBackColor = true;
+            // 
+            // BtnEdit
+            // 
+            BtnEdit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            BtnEdit.Image = Properties.Resources.edit;
+            BtnEdit.Location = new Point(682, 133);
+            BtnEdit.Name = "BtnEdit";
+            BtnEdit.Size = new Size(128, 59);
+            BtnEdit.TabIndex = 6;
+            BtnEdit.UseVisualStyleBackColor = true;
+            // 
+            // BtnNew
+            // 
+            BtnNew.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            BtnNew.Image = Properties.Resources._new;
+            BtnNew.Location = new Point(682, 68);
+            BtnNew.Name = "BtnNew";
+            BtnNew.Size = new Size(128, 59);
+            BtnNew.TabIndex = 5;
+            BtnNew.UseVisualStyleBackColor = true;
+            // 
             // PayModeView
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -323,9 +323,6 @@
         private Label label2;
         private DataGridView DgPayMode;
         private Button BtnClose;
-        private Button BtnDelete;
-        private Button BtnEdit;
-        private Button BtnNew;
         private TextBox TxtPayModeObservation;
         private Label label5;
         private TextBox TxtPayModeName;
@@ -334,5 +331,8 @@
         private Label label3;
         private Button BtnSave;
         private Button BtnCancel;
+        private Button BtnDelete;
+        private Button BtnEdit;
+        private Button BtnNew;
     }
 }
