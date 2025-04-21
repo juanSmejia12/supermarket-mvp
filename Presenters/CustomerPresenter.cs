@@ -44,27 +44,97 @@ namespace Supermarket_mvp.Presenters
 
         private void CancelAction(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            CleanViewFields();
         }
 
         private void SaveCustomer(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var customer = new CustomerModel
+            {
+                Id = Convert.ToInt32(view.CustomerId), 
+                DocumentNumber = view.DocumentNumber,    
+                FirstName = view.FirstName,  
+                LastName = view.LastName,  
+                Address = view.Address,  
+                Birthday = (DateTime)view.Birthday,
+                PhoneNumber = view.PhoneNumber, 
+                Email = view.Email
+            };
+
+            try
+            {
+                new Common.ModelDataValidation().Validate(customer);
+
+                if (view.IsEdit)
+                {
+                    repository.Edit(customer);
+                    view.Message = "Customer edited successfully";
+                }
+                else
+                {
+                    repository.Add(customer);
+                    view.Message = "Customer added successfully";
+                }
+
+                view.IsSuccessful = true;
+                LoadAllCustomerList();
+                CleanViewFields();
+            }
+            catch (Exception ex)
+            {
+                view.IsSuccessful = false;
+                view.Message = ex.Message;
+            }
+        }
+        private void CleanViewFields()
+        {
+            view.CustomerId = "0";
+            view.DocumentNumber = "";
+            view.FirstName = "";
+            view.LastName = "";
+            view.Address = "";
+            view.Birthday = null; 
+            view.PhoneNumber = "";
+            view.Email = "";
         }
 
         private void DeleteSelectedCustomer(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var customer = (CustomerModel)customerBindingSource.Current;
+
+                repository.Delete(customer.Id);
+                view.IsSuccessful = true;
+                view.Message = "Customer deleted successfully";
+                LoadAllCustomerList();
+            }
+            catch (Exception ex)
+            {
+                view.IsSuccessful = false;
+                view.Message = "An error occurred, could not delete customer";
+            }
         }
 
         private void LoadSelectedCustomerToEdit(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var customer = (CustomerModel)customerBindingSource.Current;
+
+            view.CustomerId = customer.Id.ToString();
+            view.DocumentNumber = customer.DocumentNumber;
+            view.FirstName = customer.FirstName;
+            view.LastName = customer.LastName;
+            view.Address = customer.Address;
+            view.Birthday = customer.Birthday;
+            view.PhoneNumber = customer.PhoneNumber;
+            view.Email = customer.Email;              
+
+            view.IsEdit = true;
         }
 
         private void AddNewCustomer(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            view.IsEdit = false;
         }
 
         private void SearchCustomer(object? sender, EventArgs e)

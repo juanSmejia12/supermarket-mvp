@@ -18,17 +18,53 @@ namespace Supermarket_mvp._Repositories
         }
         public void Add(ProductModel productModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "INSERT INTO Products (name, price, stock, category_id) VALUES (@name, @price, @stock, @categoryId)";
+                command.Parameters.Add("@name", SqlDbType.NChar).Value = productModel.Name;
+                command.Parameters.Add("@price", SqlDbType.Int).Value = productModel.Price;
+                command.Parameters.Add("@stock", SqlDbType.Int).Value = productModel.Stock;
+                command.Parameters.Add("@categoryId", SqlDbType.Int).Value = productModel.CategoryId;
+                command.ExecuteNonQuery();
+            }
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "DELETE FROM Products WHERE id = @id";
+                command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                command.ExecuteNonQuery();
+            }
         }
 
         public void Edit(ProductModel productModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = @"UPDATE Products
+                                    SET name = @name,
+                                        price = @price,
+                                        stock = @stock,
+                                        category_id = @categoryId
+                                    WHERE id = @id";
+                command.Parameters.Add("@name", SqlDbType.NChar).Value = productModel.Name;
+                command.Parameters.Add("@price", SqlDbType.Int).Value = productModel.Price;
+                command.Parameters.Add("@stock", SqlDbType.Int).Value = productModel.Stock;
+                command.Parameters.Add("@categoryId", SqlDbType.Int).Value = productModel.CategoryId;
+                command.Parameters.Add("@id", SqlDbType.Int).Value = productModel.Id;
+                command.ExecuteNonQuery();
+            }
         }
 
         public IEnumerable<ProductModel> GetAll()

@@ -34,6 +34,58 @@ namespace Supermarket_mvp.Views
                     SearchEvent?.Invoke(this, EventArgs.Empty);
                 }
             };
+            BtnNew.Click += delegate
+            {
+                AddNewEvent?.Invoke(this, EventArgs.Empty);
+
+                tabControl1.TabPages.Remove(tabPageCustomerList);
+                tabControl1.TabPages.Add(tabPageCustomerDetail);
+                tabPageCustomerDetail.Text = "Add New Customer";
+            };
+
+            // Editar cliente
+            BtnEdit.Click += delegate
+            {
+                EditEvent?.Invoke(this, EventArgs.Empty);
+
+                tabControl1.TabPages.Remove(tabPageCustomerList);
+                tabControl1.TabPages.Add(tabPageCustomerDetail);
+                tabPageCustomerDetail.Text = "Edit Product";
+            };
+
+            // Eliminar cliente
+            BtnDelete.Click += delegate
+            {
+                var result = MessageBox.Show("Are you sure you want to delete the selected client?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    DeleteEvent?.Invoke(this, EventArgs.Empty);
+                    MessageBox.Show(Message);
+                }
+            };
+
+            // Guardar cambios
+            BtnSave.Click += delegate
+            {
+                SaveEvent?.Invoke(this, EventArgs.Empty);
+
+                if (isSuccessful)
+                {
+                    tabControl1.TabPages.Remove(tabPageCustomerDetail);
+                    tabControl1.TabPages.Add(tabPageCustomerList);
+                }
+                MessageBox.Show(Message);
+            };
+
+            // Cancelar operación
+            BtnCancel.Click += delegate
+            {
+                CancelEvent?.Invoke(this, EventArgs.Empty);
+
+                tabControl1.TabPages.Remove(tabPageCustomerDetail);
+                tabControl1.TabPages.Add(tabPageCustomerList);
+            };
         }
 
         public string CustomerId
