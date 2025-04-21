@@ -34,12 +34,14 @@
             BtnExit = new Button();
             BtnPayMode = new Button();
             pictureBox1 = new PictureBox();
+            BtnCategory = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(BtnCategory);
             panel1.Controls.Add(BtnCustomer);
             panel1.Controls.Add(BtnProduct);
             panel1.Controls.Add(BtnExit);
@@ -48,7 +50,7 @@
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(279, 645);
+            panel1.Size = new Size(279, 743);
             panel1.TabIndex = 0;
             // 
             // BtnCustomer
@@ -76,7 +78,7 @@
             BtnExit.BackgroundImage = Properties.Resources.salida;
             BtnExit.BackgroundImageLayout = ImageLayout.Zoom;
             BtnExit.Dock = DockStyle.Bottom;
-            BtnExit.Location = new Point(0, 526);
+            BtnExit.Location = new Point(0, 624);
             BtnExit.Name = "BtnExit";
             BtnExit.Size = new Size(279, 119);
             BtnExit.TabIndex = 2;
@@ -102,11 +104,21 @@
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
+            // BtnCategory
+            // 
+            BtnCategory.BackgroundImage = Properties.Resources.categorias;
+            BtnCategory.BackgroundImageLayout = ImageLayout.Zoom;
+            BtnCategory.Location = new Point(3, 444);
+            BtnCategory.Name = "BtnCategory";
+            BtnCategory.Size = new Size(273, 119);
+            BtnCategory.TabIndex = 5;
+            BtnCategory.UseVisualStyleBackColor = true;
+            // 
             // MainView
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 645);
+            ClientSize = new Size(800, 743);
             Controls.Add(panel1);
             IsMdiContainer = true;
             Name = "MainView";
@@ -125,5 +137,6 @@
         private Button BtnExit;
         private Button BtnProduct;
         private Button BtnCustomer;
+        private Button BtnCategory;
     }
 }
