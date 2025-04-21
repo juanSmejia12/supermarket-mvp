@@ -21,6 +21,8 @@ namespace Supermarket_mvp.Views
             AssociateAndRaiseViewEvents();
 
             tabControl1.TabPages.Remove(tabPageCustomerDetail);
+
+            BtnClose.Click += delegate { this.Close(); };
         }
         private void AssociateAndRaiseViewEvents()
         {
@@ -116,6 +118,28 @@ namespace Supermarket_mvp.Views
         public void SetCustomerListBindingSource(BindingSource customerList)
         {
             DgCustomer.DataSource = customerList;
+        }
+        private static CustomerView instance;
+
+        public static CustomerView GetInstance(Form parentContainer)
+        {
+            if (instance == null || instance.IsDisposed)
+            {
+                instance = new CustomerView();
+                instance.MdiParent = parentContainer;
+
+                instance.FormBorderStyle = FormBorderStyle.None;
+                instance.Dock = DockStyle.Fill;
+            }
+            else
+            {
+                if (instance.WindowState == FormWindowState.Minimized)
+                {
+                    instance.WindowState = FormWindowState.Normal;
+                }
+                instance.BringToFront();
+            }
+            return instance;
         }
     }
 }
