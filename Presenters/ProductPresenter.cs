@@ -17,6 +17,7 @@ namespace Supermarket_mvp.Presenters
     
         public ProductPresenter(IProductView view, IProductRepository repository)
         {
+            this.productBindingSource = new BindingSource();
             this.view = view;
             this.repository = repository;
 
